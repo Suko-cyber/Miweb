@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiWeb - Presentación del Proyecto</title>
+    <meta name="description" content="Página web principal para presentar mi proyecto y servicios.">
+    
+    <!-- Importamos una fuente moderna desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           VARIABLES CSS (Tema de Colores)
+           ========================================= */
+        :root {
+            --primary-color: #4f46e5;       /* Azul índigo vibrante */
+            --primary-dark: #4338ca;        /* Azul índigo más oscuro */
+            --accent-color: #10b981;        /* Verde esmeralda para detalles */
+            --text-main: #1f2937;           /* Gris muy oscuro para texto */
+            --text-light: #6b7280;          /* Gris medio para subtítulos */
+            --bg-body: #f9fafb;             /* Fondo gris muy claro */
+            --bg-white: #ffffff;            /* Fondo blanco puro */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --container-width: 1200px;
+        }
+
+        /* =========================================
+           RESET Y BASE
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* =========================================
+           LAYOUT UTILITIES
+           ========================================= */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+           HEADER / NAVBAR
+           ========================================= */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            color: white; /* Asegurar contraste */
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        #hero {
+            padding-top: 140px; /* Compensa el header fijo */
+            padding-bottom: 100px;
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            object-fit: cover;
+            height: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* =========================================
+           SERVICIOS / CARACTERÍSTICAS
+           ========================================= */
+        #features {
+            background-color: var(--bg-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-body);
+            padding: 40px;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(79, 70, 229, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(79, 70, 229, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           PROYECTO (SHOWCASE)
+           ========================================= */
+        .project-container {
+            background-color: var(--bg-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content {
+            padding: 60px;
+            flex: 1;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* =========================================
+           CONTACTO
+           ========================================= */
+        #contact {
+            background-color: var(--text-main);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #contact .section-header h2 {
+            color: white;
+        }
+
+        #contact .section-header p {
+            color: #d1d5db;
+        }
+
+        .contact-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           RESPONSIVE (MÓVIL)
+           ========================================= */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplificación para el ejemplo sin JS */
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-content {
+                padding: 30px;
+            }
+            
+            .project-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <!-- Icono SVG simple -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    MiWeb
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#features">Servicios</a></li>
+                    <li><a href="#project">Mi Proyecto</a></li>
+                </ul>
+                <a href="#contact" class="btn-primary">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal (Hero) -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bienvenido a <br><span>Mi Espacio Digital</span></h1>
+                    <p>Este es el lugar donde presento mis ideas, proyectos y soluciones innovadoras. Explora cómo mi trabajo puede ayudarte a alcanzar tus objetivos.</p>
+                    <a href="#project" class="btn-primary">Ver Proyecto</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Imagen genérica de tecnología/oficina -->
+                    <img src="https://picsum.photos/seed/techweb/800/600" alt="Espacio de trabajo moderno" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características / Servicios -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que ofrezco</h2>
+                <p>Soluciones diseñadas para cubrir tus necesidades con la máxima calidad y eficiencia.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Tarjeta 1 -->
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Seguridad Total</h3>
+                    <p>Implementamos las mejores prácticas para asegurar que tu información y la de tus clientes siempre estén protegidas.</p>
+                </article>
+
+                <!-- Tarjeta 2 -->
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Alto Rendimiento</h3>
+                    <p>Código optimizado para cargar en segundos, proporcionando una experiencia de usuario fluida y sin interrupciones.</p>
+                </article>
+
+                <!-- Tarjeta 3 -->
+                <article class="feature-card">
+                    <div class="icon-box">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Diseño Responsivo</h3>
+                    <p>Tu web se verá perfecta en cualquier dispositivo, desde teléfonos móviles hasta grandes pantallas de escritorio.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Proyecto Principal -->
+    <section id="project">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mi Proyecto Principal</h2>
+                <p>Una visión detallada de la iniciativa que integra todos mis conocimientos y habilidades.</p>
+            </div>
+
+            <div class="project-container">
+                <img src="https://picsum.photos/seed/projectcode/1200/500" alt="Captura del proyecto" class="project-image">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Desarrollo Web</span>
+                        <span class="tag">Innovación</span>
+                        <span class="tag">UX/UI</span>
+                    </div>
+                    <h3>Transformando ideas en realidad digital</h3>
+                    <p style="margin-top: 15px; color: var(--text-light);">
+                        Este proyecto nació con la necesidad de integrar soluciones eficientes en un entorno digital. He trabajado meticulosamente en cada componente, asegurando que la funcionalidad vaya de la mano con un diseño estético pulido.
+                    </p>
+                    <p style="margin-top: 10px; color: var(--text-light);">
+                        El objetivo principal es demostrar cómo la tecnología puede simplificar procesos complejos y mejorar la interacción entre usuarios y sistemas.
+                    </p>
+
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <h4>100%</h4>
+                            <p>Funcionalidad</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>24/7</h4>
+                            <p>Soporte</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>+500</h4>
+                            <p>Usuarios Felices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto / CTA -->
+    <section id="contact">
+        <div class="container">
+            <h2>¿Listo para comenzar?</h2>
+            <p style="margin: 15px 0 30px;">Estoy disponible para nuevos retos y colaboraciones. Hablemos.</p>
+            <a href="mailto:ejemplo@miweb.com" class="contact-btn">Envíame un correo</a>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MiWeb. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
